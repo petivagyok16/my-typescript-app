@@ -1,0 +1,14 @@
+.products-screen__container {
+  display: block;
+  text-align: center;
+}
+
+.title {
+  margin-bottom: 48px;
+}
+
+.products-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}

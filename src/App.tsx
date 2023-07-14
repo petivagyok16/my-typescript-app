@@ -1,26 +1,20 @@
 import React from 'react';
-import logo from './logo.svg';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import Layout from './ui-components/layout/layout';
+import ProductsScreen from './screens/products/products-screen';
+
+const App: React.FunctionComponent = () => {
+
+  const router = createBrowserRouter([
+    { path: '/', element: <Layout />, children: [
+      { path: '/', element: <ProductsScreen />},
+    ]},
+  ])
+
+  return <RouterProvider router={router}/>;
 }
 
 export default App;
