@@ -1,0 +1,17 @@
+.new-product-screen__container {
+  display: block;
+  text-align: center;
+}
+
+.title {
+  margin-bottom: 48px;
+}
+
+.form-card-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.form-card {
+  padding: 48px;
+}

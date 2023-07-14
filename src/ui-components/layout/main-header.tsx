@@ -37,7 +37,7 @@ const MainHeader: React.FunctionComponent<PropsWithChildren> = (): ReactElement 
       </nav>
       <button onClick={onCartItemsClickHandler}>Cart ({ cartItemsCount })</button>
 
-      <Modal isOpen={showCart} onClose={onCloseModalHandler}>
+      <Modal title={'Cart'} isOpen={showCart} onClose={onCloseModalHandler}>
         <CartModal />
       </Modal>
     </header>

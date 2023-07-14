@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { RootState } from "../../store/store";
 import { cartActions, selectCartItems, selectCartItemsSumPrice } from "../../store/cart/cart.slice";
-import { CartItem as CartItemInput } from "../../interfaces/cart-item.interface";
+import { CartItem as CartItemType } from "../../interfaces/cart-item.interface";
 import CartItem from "../../components/cart-item/cart-item";
 
 import classes from './cart-modal.module.css';
@@ -17,16 +17,15 @@ const CartModal: React.FunctionComponent<PropsWithChildren> = (): ReactElement =
   const cartSumPrice = selectCartItemsSumPrice(cartState);
   const formattedCartSumPrice = formatPrice(cartSumPrice);
 
-  const onRemoveItemFromCart = (cartItem: CartItemInput): void => {
+  const onRemoveItemFromCart = (cartItem: CartItemType): void => {
     dispatch(cartActions.removeItemFromCart(cartItem));
   };
 
   return (
     <>
-      <h1>Cart</h1>
       <ul className={classes['cart-items-list']}>
         {
-          cartItems.map((item: CartItemInput) => {
+          cartItems.map((item: CartItemType) => {
             return (
               <CartItem key={item.id} cartItem={item} removeItemFromCart={onRemoveItemFromCart}/>
             )

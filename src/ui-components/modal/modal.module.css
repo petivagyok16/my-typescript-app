@@ -20,13 +20,27 @@
   border-radius: 4px;
 }
 
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
 .modal-close {
-  position: absolute;
-  top: 0.5rem;
-  right: 0.5rem;
   background: none;
   border: none;
   font-size: 1.5rem;
   color: #999;
   cursor: pointer;
+}
+
+.modal-close:hover {
+  color: #fff;
+}
+
+h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #fff;
 }
