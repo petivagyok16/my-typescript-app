@@ -1,7 +1,7 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import createSagaMiddleware from 'redux-saga';
 
-import rootSaga from './sagas/rootSaga';
+import rootSaga from './sagas/root-saga';
 import { productsReducer } from './products/products.slice';
 import { cartReducer } from './cart/cart.slice';
 
