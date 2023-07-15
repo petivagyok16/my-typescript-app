@@ -22,6 +22,7 @@ const NewProductScreen: React.FunctionComponent<PropsWithChildren> = (): ReactEl
       navigate('/');
     }
     return () => {
+      // TODO: this reset implicates it would be cool to make this new product flow with "ComponentStore" if there's such a thing
       dispatch(newProductActions.resetNewProductFlow());
     };
   }, [isAddNewProductSuccess, navigate, dispatch]);
