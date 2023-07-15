@@ -1,0 +1,15 @@
+.cart-item-body-wrapper {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.delete-cart-item-button:hover {
+  background-color: red;
+  border-color: gray;
+}
+
+.sum-price {
+  font-size: 12px;
+  font-style: italic;
+}

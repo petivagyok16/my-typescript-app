@@ -1,0 +1,44 @@
+.header {
+  align-items: center;
+  background-color: #252424;
+  display: flex;
+  justify-content: space-between;
+  height: 5rem;
+  padding: 0 10%;
+  margin-bottom: 48px;
+  width: 100%;
+}
+
+.header h1 {
+  color: white;
+  margin-right: 3rem;
+}
+
+.header nav {
+  display: flex;
+  align-items: center;
+}
+
+.header ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
+}
+
+.header li {
+  margin: 0 1rem;
+}
+
+.header ul a {
+  text-decoration: none;
+  color: whitesmoke;
+}
+
+.header ul a:hover,
+.header ul a.active {
+  color: #1ac5d1;
+  text-decoration: underline;
+}
