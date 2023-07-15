@@ -30,7 +30,10 @@ const productsSlice = createSlice({
     fetchProductsError: (state, action: PayloadAction<string>) => {
       state.error = action.payload;
       state.requestState = RequestState.REJECTED;
-    }
+    },
+    addNewProductSuccess: (state, action: PayloadAction<ProductItem>) => {
+      state.products.push(action.payload)
+    },
   }
 });
 

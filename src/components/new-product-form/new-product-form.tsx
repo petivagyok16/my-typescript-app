@@ -1,8 +1,14 @@
-import React, { PropsWithChildren, ReactElement } from 'react';
+import React, { PropsWithChildren, ReactElement} from 'react';
 import { useForm } from 'react-hook-form';
-import { TextField, Button, InputAdornment } from '@mui/material';
+import { TextField, Button, InputAdornment, CircularProgress } from '@mui/material';
 
 import classes from './new-product-form.module.css';
+import { ProductItemDto } from '../../interfaces/product-item-dto.interface';
+
+interface NewProductFormProps extends PropsWithChildren {
+  isAddNewProductLoading: boolean;
+  submitNewProduct: (product: ProductItemDto) => void
+}
 
 interface NewProductValues {
   readonly title: string;
@@ -10,11 +16,17 @@ interface NewProductValues {
   readonly price: number;
 }
 
-const NewProductForm: React.FunctionComponent<PropsWithChildren> = (): ReactElement => {
+const NewProductForm: React.FunctionComponent<NewProductFormProps> = (props): ReactElement => {
   const { register, handleSubmit, formState: { errors }, setValue } = useForm<NewProductValues>();
 
   const onSubmit = (data: NewProductValues) => {
-    console.log(data);
+    const newProduct: ProductItemDto = {
+      title: data.title,
+      description: data.description,
+      price: Number(data.price)
+    };
+
+    props.submitNewProduct(newProduct);
   };
 
   const validatePrice = (value: number) => {
@@ -26,6 +38,7 @@ const NewProductForm: React.FunctionComponent<PropsWithChildren> = (): ReactElem
 
   const handlePriceChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = parseFloat(event.target.value);
+
     if (value < 0) {
       setValue('price', 0);
     }
@@ -56,7 +69,10 @@ const NewProductForm: React.FunctionComponent<PropsWithChildren> = (): ReactElem
         helperText={errors.price ? 'Price is required and must be a number' : ''}
         onChange={handlePriceChange}
       />
-      <Button type="submit" variant="contained" color="primary" className={classes['submit-button']}>Submit</Button>
+      <Button type="submit" variant="contained" color="primary" className={classes['submit-button']}>
+        <span className={classes['submit-button-text']}>Submit</span>
+        { props.isAddNewProductLoading && <CircularProgress size={16} color="inherit" /> }
+      </Button>
     </form>
   );
 };
