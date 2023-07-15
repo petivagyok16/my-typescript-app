@@ -12,12 +12,16 @@ interface ModalProps extends PropsWithChildren {
 const Modal: React.FunctionComponent<ModalProps> = ({ isOpen, title, onClose, children }: ModalProps): ReactElement | null => {
   if (!isOpen) return null;
 
+  const onModalContentClickHandler = (event: React.MouseEvent): void => {
+    event.stopPropagation();
+  };
+
   return (
     <>
       {
         ReactDOM.createPortal(
           <div className={classes['modal-overlay']} onClick={onClose}>
-            <div className={classes['modal-content']}>
+            <div className={classes['modal-content']} onClick={onModalContentClickHandler}>
               <div className={classes['modal-header']}>
                 <h1>{title}</h1>
                 <button className={classes['modal-close']} onClick={onClose}>
