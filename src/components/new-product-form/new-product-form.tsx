@@ -26,7 +26,9 @@ const NewProductForm: React.FunctionComponent<PropsWithChildren> = (): ReactElem
 
   const handlePriceChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = parseFloat(event.target.value);
-    setValue('price', isNaN(value) ? 0 : Math.max(0, value));
+    if (value < 0) {
+      setValue('price', 0);
+    }
   };
 
   return (
